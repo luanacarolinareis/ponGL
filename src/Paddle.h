@@ -4,9 +4,9 @@
 class Paddle {
 public:
     void setup(float x, float y, float width, float height);
-    void moveUp();
-    void moveDown();
-    void autoMove(float targetY);
+    void moveUp(float fieldY);
+    void moveDown(float fieldY, float fieldHeight);
+    void autoMove(float targetY, float fieldY, float fieldHeight);
     void draw();
     void setBounds(float screenHeight);
 

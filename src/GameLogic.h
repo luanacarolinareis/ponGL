@@ -4,10 +4,10 @@
 
 class GameLogic {
 public:
-    void handleCollisions(Ball& ball, Paddle& paddleLeft, Paddle& paddleRight);
-    void updateScores(Ball& ball);
-    void drawScores();
-    void handleScreenFlash();
+    void handleCollisions(Ball& ball, Paddle& paddleLeft, Paddle& paddleRight, float fieldX, float fieldWidth);
+    void updateScores(Ball& ball, float fieldX, float fieldY, float fieldWidth, float fieldHeight);
+    void drawScores(float fieldX, float fieldY, float fieldWidth);
+    void handleScreenFlash(float fieldX, float fieldY, float fieldWidth, float fieldHeight);
     bool isFlashing();
 
 private:

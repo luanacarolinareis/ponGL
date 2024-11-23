@@ -1,47 +1,55 @@
 #include "GameLogic.h"
 
-void GameLogic::handleCollisions(Ball& ball, Paddle& paddleLeft, Paddle& paddleRight) {
-    if (ball.getPosition().x - 10 <= paddleLeft.getPosition().x + paddleLeft.getWidth() &&
+void GameLogic::handleCollisions(Ball& ball, Paddle& paddleLeft, Paddle& paddleRight, float fieldX, float fieldWidth) {
+    // Colisão com o paddle esquerdo
+    if (ball.getPosition().x - ball.getRadius() <= paddleLeft.getPosition().x + paddleLeft.getWidth() &&
+        ball.getPosition().x - ball.getRadius() >= fieldX &&
         ball.getPosition().y >= paddleLeft.getPosition().y &&
         ball.getPosition().y <= paddleLeft.getPosition().y + paddleLeft.getHeight()) {
         ball.reverseX();
     }
 
-    if (ball.getPosition().x + 10 >= paddleRight.getPosition().x &&
+    // Colisão com o paddle direito
+    if (ball.getPosition().x + ball.getRadius() >= paddleRight.getPosition().x &&
+        ball.getPosition().x + ball.getRadius() <= fieldX + fieldWidth &&
         ball.getPosition().y >= paddleRight.getPosition().y &&
         ball.getPosition().y <= paddleRight.getPosition().y + paddleRight.getHeight()) {
         ball.reverseX();
     }
 }
 
-void GameLogic::updateScores(Ball& ball) {
-    if (ball.getPosition().x <= 0.0f) {
+void GameLogic::updateScores(Ball& ball, float fieldX, float fieldY, float fieldWidth, float fieldHeight) {
+    if (ball.getPosition().x - ball.getRadius() <= fieldX) {
         // Jogador direito marca ponto
         scoreRight++;
-        ball.resetPosition(ofGetWidth() / 2.0f, ofGetHeight() / 2.0f);
+        ball.resetPosition(fieldX + fieldWidth / 2.0f, fieldY + fieldHeight / 2.0f, fieldX, fieldY, fieldWidth, fieldHeight);
         screenFlash = true;
         flashStartTime = ofGetElapsedTimef();
     }
 
-    if (ball.getPosition().x >= ofGetWidth()) {
+    if (ball.getPosition().x + ball.getRadius() >= fieldX + fieldWidth) {
         // Jogador esquerdo marca ponto
         scoreLeft++;
-        ball.resetPosition(ofGetWidth() / 2.0f, ofGetHeight() / 2.0f);
+        ball.resetPosition(fieldX + fieldWidth / 2.0f, fieldY + fieldHeight / 2.0f, fieldX, fieldY, fieldWidth, fieldHeight);
         screenFlash = true;
         flashStartTime = ofGetElapsedTimef();
     }
 }
 
-void GameLogic::drawScores() {
+void GameLogic::drawScores(float fieldX, float fieldY, float fieldWidth) {
     ofSetColor(255);
-    ofDrawBitmapString("Left: " + ofToString(scoreLeft), 50, 50);
-    ofDrawBitmapString("Right: " + ofToString(scoreRight), ofGetWidth() - 150, 50);
+
+    // Score esquerdo à esquerda dentro do campo
+    ofDrawBitmapString("Left: " + ofToString(scoreLeft), fieldX + 20, fieldY + 30);
+
+    // Sscore direito à direita dentro do campo
+    ofDrawBitmapString("Right: " + ofToString(scoreRight), fieldX + fieldWidth - 120, fieldY + 30);
 }
 
-void GameLogic::handleScreenFlash() {
+void GameLogic::handleScreenFlash(float fieldX, float fieldY, float fieldWidth, float fieldHeight) {
     if (screenFlash) {
         ofSetColor(255, 0, 0);
-        ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+        ofDrawRectangle(fieldX, fieldY, fieldWidth, fieldHeight);
 
         // Desativa o flash após 0.5 segundos
         if (ofGetElapsedTimef() - flashStartTime > 0.5f) {

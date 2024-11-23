@@ -6,24 +6,24 @@ void Paddle::setup(float x, float y, float width, float height) {
     this->height = height;
 }
 
-void Paddle::moveUp() {
+void Paddle::moveUp(float fieldY) {
     position.y -= speed;
-    if (position.y < 0.0f) { // Limite superior
-        position.y = 0.0f;
+    if (position.y < fieldY) { // Limite superior do campo
+        position.y = fieldY;
     }
 }
 
-void Paddle::moveDown() {
+void Paddle::moveDown(float fieldY, float fieldHeight) {
     position.y += speed;
-    if (position.y + height > ofGetHeight()) { // Limite inferior
-        position.y = ofGetHeight() - height;
+    if (position.y + height > fieldY + fieldHeight) { // Limite inferior do campo
+        position.y = fieldY + fieldHeight - height;
     }
 }
 
-void Paddle::autoMove(float targetY) {
+void Paddle::autoMove(float targetY, float fieldY, float fieldHeight) {
     if (abs(position.y + height / 2 - targetY) > 10.0f) {
-        if (position.y + height / 2 < targetY) moveDown();
-        else moveUp();
+        if (position.y + height / 2 < targetY) moveDown(fieldY, fieldHeight);
+        else moveUp(fieldY);
     }
     setBounds(ofGetHeight());
 }
