@@ -1,0 +1,43 @@
+#include "Paddle.h"
+
+void Paddle::setup(float x, float y, float width, float height) {
+    position.set(x, y);
+    this->width = width;
+    this->height = height;
+}
+
+void Paddle::moveUp() {
+    position.y -= speed;
+    if (position.y < 0.0f) { // Limite superior
+        position.y = 0.0f;
+    }
+}
+
+void Paddle::moveDown() {
+    position.y += speed;
+    if (position.y + height > ofGetHeight()) { // Limite inferior
+        position.y = ofGetHeight() - height;
+    }
+}
+
+void Paddle::autoMove(float targetY) {
+    if (abs(position.y + height / 2 - targetY) > 10.0f) {
+        if (position.y + height / 2 < targetY) moveDown();
+        else moveUp();
+    }
+    setBounds(ofGetHeight());
+}
+
+void Paddle::setBounds(float screenHeight) {
+    if (position.y < 0.0f) position.y = 0.0f;
+    if (position.y + height > screenHeight) position.y = screenHeight - height;
+}
+
+void Paddle::draw() {
+    ofSetColor(255);
+    ofDrawRectangle(position.x, position.y, width, height);
+}
+
+ofVec2f Paddle::getPosition() { return position; }
+float Paddle::getWidth() { return width; }
+float Paddle::getHeight() { return height; }
