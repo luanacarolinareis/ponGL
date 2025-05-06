@@ -35,6 +35,6 @@ Antes de compilar, certifique-se de ter:
 </p>
 
 ## 👩‍💻 Autora
-Luana Carolina Reis
+[Carolina Reis](https://github.com/luanacarolinareis)
 
-Este projeto foi desenvolvido no âmbito de uma disciplina de Computação Gráfica.
+Este projeto foi desenvolvido no âmbito da disciplina de Computação Gráfica.
