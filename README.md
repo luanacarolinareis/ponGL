@@ -27,7 +27,10 @@ Antes de compilar, certifique-se de ter:
 - OpenGL
 
 ## 📸 Capturas de Ecrã
-![image](https://github.com/user-attachments/assets/6a808dc8-a23d-4be9-bc94-da46e55847a1)
+![image](https://github.com/user-attachments/assets/9a33a2b4-361b-4041-8160-b0974be05ae8)
+![image](https://github.com/user-attachments/assets/fa4c4cba-e154-407e-8d74-94ea8f20c88f)
+![image](https://github.com/user-attachments/assets/046c24d4-8007-4f6c-b2af-c8195bf52c70)
+![image](https://github.com/user-attachments/assets/ee5568d4-79b1-4788-a3a7-65b686b9ea4e)
 
 ## 👩‍💻 Autora
 Luana Carolina Reis
