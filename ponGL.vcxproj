@@ -112,7 +112,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Ball.h" />
+    <ClInclude Include="src\cg_cam_extras.h" />
+    <ClInclude Include="src\cg_drawing_extras.h" />
+    <ClInclude Include="src\cg_extras.h" />
     <ClInclude Include="src\GameLogic.h" />
+    <ClInclude Include="src\Materials.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Paddle.h" />
   </ItemGroup>

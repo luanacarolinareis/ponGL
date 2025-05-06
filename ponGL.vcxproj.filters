@@ -35,6 +35,18 @@
     <ClInclude Include="src\Paddle.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\cg_drawing_extras.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cg_cam_extras.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cg_extras.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Materials.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
