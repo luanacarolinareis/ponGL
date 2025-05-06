@@ -35,4 +35,5 @@ Antes de compilar, certifique-se de ter:
 </p>
 
 ## 👩‍💻 Autora
-[Carolina Reis](https://github.com/luanacarolinareis)
+
+- [Carolina Reis](https://github.com/luanacarolinareis)
